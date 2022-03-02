@@ -1,3 +1,4 @@
+// messages
 document.getElementById('error-message').style.display = 'none';
 document.getElementById('blank-message').style.display = 'none';
 document.getElementById('no-result-message').style.display = 'none';
