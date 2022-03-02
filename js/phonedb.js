@@ -93,5 +93,3 @@ const displayProductDetail = product => {
           </div > `;
     productlDetails.appendChild(div);
 }
-
-{/* <h6 class='card-title'>Bluetooth :  ${product.others?.Bluetooth ? product.others.Bluetooth : "Not Avalaible"}</h6> */ }
