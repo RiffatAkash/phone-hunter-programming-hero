@@ -1,4 +1,6 @@
 document.getElementById('error-message').style.display = 'none';
+document.getElementById('blank-message').style.display = 'none';
+document.getElementById('no-result-message').style.display = 'none';
 
 const searchFood = () => {
     const searchField = document.getElementById('search-field');
@@ -6,9 +8,16 @@ const searchFood = () => {
     // clear data
     searchField.value = '';
     if (searchText == '') {
-        // please write something to display
+        document.getElementById('blank-message').style.display = 'block';
+        const searchResult = document.getElementById('search-result');
+        searchResult.textContent = '';
+        const productlDetails = document.getElementById('product-details');
+        productlDetails.textContent = '';
     }
     else {
+        document.getElementById('error-message').style.display = 'none';
+        document.getElementById('blank-message').style.display = 'none';
+        document.getElementById('no-result-message').style.display = 'none';
         // load data 
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
 
@@ -33,6 +42,9 @@ const displaySearchResult = phones => {
     productlDetails.textContent = '';
     if (phones.length == 0) {
         // show no result found
+        document.getElementById('no-result-message').style.display = 'block';
+    } else {
+        document.getElementById('no-result-message').style.display = 'none';
     }
     let phone_slice = phones.slice(0, 20);
     phone_slice.forEach(phone => {
@@ -41,9 +53,9 @@ const displaySearchResult = phones => {
         div.innerHTML = `<div class="card">
                                    <img style="width: 70%" src="${phone.image}" class="card-img-top" alt="...">
                                    <div class="card-body">
-                                   <h5 class="card-title">${phone.phone_name}</h5>
-                                   <h5 class="card-title">${phone.brand}</h5>
-                                   <a  onclick="loadPhoneDetail('${phone.slug}')" class="btn btn-primary">Go somewhere</a>
+                                   <h5 class="card-title">Name : ${phone.phone_name}</h5>
+                                   <h5 class="card-title">Brand : ${phone.brand}</h5>
+                                   <a  onclick="loadPhoneDetail('${phone.slug}')" class="btn btn-primary">Details</a>
                                </div>`;
         searchResult.appendChild(div);
     });
