@@ -29,7 +29,7 @@ const searchFood = () => {
     }
 
 }
-
+// error message check
 const displayError = error => {
     console.log(error);
     document.getElementById('error-message').style.display = 'block';
